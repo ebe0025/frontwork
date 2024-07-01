@@ -1,0 +1,168 @@
+
+/* ============================ 1. 속성 선택자 =================================== */
+/* div요소들 중 name속성 값이 name1과 "일치"하는 요소 */
+div[name=name1]{
+    background-color: orange;
+}
+
+/* div요소들 중에 name속성값이 name1이 "포함"하는 요소(공백으로 구분, 단어로 포함되어 있음) */
+div[name~=name1]{ 
+    color:cornflowerblue
+}
+
+
+/* div요소들 중 class속성값이 class로 "시작"하는 요소*/
+div[class^=class]{
+    background-color: aquamarine;
+}   
+
+/* div요소들 중 class속성값이 class로 "시작"하는 요소(단어단위로 -로 구분)*/
+div[class|=class]
+{
+    color: blueviolet;
+}
+/* div요소들 중 class속성값이 ss로 "끝"나는 요소*/
+div[class$=ss]{
+    font-size: 20px;
+}
+
+/*div요소들 중 class속성값이 i를 "포함"하는 요소 */
+div[class*=i] {
+    border : 1px dotted;
+}
+/* 응용 : class속성값이 div-class인 요소들 중에서 name속성값이
+          name3이 포함되어 있는 요소 스타일*/
+
+.div-class[name~=name3]{
+    background-color: bisque;
+}
+
+/* ==========================2. 자손 선택자와 후손 선택자 =================*/
+/* id가 test1인 요소의 자손들 중 h4요소만 선택*/
+#test1>h4{
+    background-color: orange;
+}
+/* ul의 자손 요소들 선택*/
+#test1>ul>li{
+    background-color: azure;
+}
+/* id가 test1인 요소의 후손들 요소 선택*/
+#test1 li{
+    color: blueviolet;
+}
+
+/* ==========================3. 동위 선택자 =================*/
+/* id가 test2인 형제들 중 바로 뒤에 나오는 div 요소 하나만 */
+#test2+div{
+    background-color: brown;
+}
+
+#test2+ul{
+    background-color: aquamarine; /*선택안됨(바로 뒤에 요소가 아니기 때문)*/
+}
+
+/* id가 test2인 형제들 중 div 요소들 모두 선택*/
+#test2~div{
+    color: blue;
+}
+
+/* ==========================4. 반응 선택자 =================*/
+.area{
+    width: 100px;
+    height: 100px;
+    background-color: aquamarine;
+
+}
+#active-test:active{
+    background-color: blueviolet;
+    color: white;
+}
+#hover-test:hover{
+    background-color: orangered;
+    color: white;
+}
+#link:link{
+    color: aquamarine;
+}
+#link:hover{
+    color:green;
+}
+#link:active{
+    color:blueviolet;
+}
+#link:visited{
+    color:tomato;
+}
+
+
+/* ===========================5. 상태 선택자 ====================*/
+input[type=checkbox]:checked{
+    width: 30px;
+    height: 30px;
+}
+
+/* 체크박스가 선택되면 글자도 커지게 스타일 지정 */
+input[name*=선택]:checked+label
+{
+    font-size: 20px;
+}
+
+input[name^=user]:focus
+{
+    background-color: pink;
+}
+button:enabled{
+    background-color: rgb(173, 97, 244);
+}
+button:disabled{
+    background-color: beige;
+}
+
+/* ===========================6. 일반 구조 선택자 ====================*/
+#summer :first-child{
+    background-color: lightgray;
+}
+
+#summer :last-child{
+    background-color: lightpink;
+}
+
+#summer :nth-child(2){
+    background-color: lightcyan;
+}
+
+#summer :nth-child(2n){
+    color: brown;
+}
+#summer :nth-child(2n+1){
+    color: red;
+}
+
+/* ===========================7. 형태 구조 선택자 ====================*/
+/* 첫번째는 div인ㄴ데 p태그로 잘못 기재했다고 인식 안됨.
+first-child: 첫번째가 중요 태그는 중요치 않음
+#fall p:first-child{
+    background-color: lightgray;
+} */
+
+
+#fall p:first-of-type{
+    background-color: lightgray;
+}
+#fall p:last-of-type{
+    background-color: lightcoral;
+}
+#fall p:nth-of-type(3){
+    background-color: lightpink;
+}
+#fall p:nth-of-type(2n){
+    color:rgb(244, 244, 29);
+}
+
+#fall p:nth-of-type(2n+1){
+    color:springgreen;
+}
+/* ===========================8. 부정 선택자 ====================*/
+#winter :not(p:first-child) {
+    color: darkorange;
+}

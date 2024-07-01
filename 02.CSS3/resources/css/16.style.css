@@ -1,0 +1,39 @@
+body, header, selection{
+    width: 100%;
+}
+header h1{
+    font-size: 3em;
+    text-align: center;
+}
+section>div{
+    display: flex;
+    position: relative;
+    height: 400px;
+    border: 1px solid rgb(255, 247, 0);
+    margin-bottom: 20px;
+    background-size: cover;
+    width: 100%;
+}
+section h2{
+    position: absolute;
+    padding: 5px;
+    font-size: 2em;
+    text-shadow: 3px 3px 5px;
+    right: 3%;
+    bottom: 10px;
+}
+#menu1 {
+    background: url(../img/팬케이크.jpg) no-repeat center;
+}
+#menu2 {
+    background: url(../img/피자롤.jpg) no-repeat center;
+}
+#menu3 {
+    background: url(../img/연어스테이크.jpg) no-repeat center;
+}
+#menu4 {
+    background: url(../img/피자.jpg) no-repeat center;
+}
+#menu5 {
+    background: url(../img/송아지스테이크.jpg) no-repeat center;
+}

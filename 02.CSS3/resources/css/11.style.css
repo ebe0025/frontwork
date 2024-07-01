@@ -1,0 +1,50 @@
+body{
+    background-color: cadetblue;
+    background-color: rgba(95, 158, 160, 0.3);
+}
+#div-bg{
+    background-color: white;
+    padding: 20px;
+    border: 1px solid rgb(49, 50, 50);
+    width: 50%;
+}
+.div-test{
+    margin: 30px;
+    background-color: yellowgreen;
+    border: 10px dashed;
+    padding: 20px;
+}
+#div1{
+    background-clip: border-box;
+}
+#div2{
+    background-clip: padding-box;
+}
+#div3{
+    background-clip: content-box;
+}
+#bg-img{
+    border: 1px solid;
+    width: 50%;
+    height: 800px;
+    background-image: url("../img/조그만새.jpg");
+    /* background-repeat: repeat-x; */
+    background-repeat: no-repeat;
+    background-size : auto; /* 기본값 이미지 원래 사이즈만큼 */
+    background-size: contain; /* 해당 요소안에 이미지의 비율에 맞게 최대한 가득차게 */
+    background-size: cover; /*해당 요소에 가득 차게*/
+    background-size: 300px; /*가로 크기 세로는 비율에 맞게 크기 조정*/
+    background-size: 300px 300px; /*가로 세로*/
+    background-size: 30%;
+    background-size: 50% 50%;
+    background-size: auto;
+
+    background-position: left top; /* 기본값*/
+    background-position: center bottom;
+    background-position: center center;
+    background-position: 50% 50%;
+
+    background-attachment: scroll; /*기본값*/
+    background-attachment: fixed; /* 이미지 고정 */
+    
+}
