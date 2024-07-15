@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대게 사이트</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        #logo{
+            float: left;
+            width: 200px;
+            height : 120px;
+            cursor: pointer;
+        }
+        body{
+            padding: 50px 50px;
+        }
+        ul{
+
+            float : right;
+
+        }
+        ul>li{
+            list-style: none; 
+            float: left; 
+            width: 160px; 
+            height: 60px;
+        }
+        ul>li a{
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+
+
+</head>
+<body>
+    <header>
+        <img src="resourcese/image/crab-42880_640.png" id="logo">
+        <ul>
+            <li><a href="">게의 종류</a></li>
+            <li><a href="">게의 요리</a></li>
+            <li><a href="">전체상품</a></li>
+            <li><a href="">문의게시판</a></li>
+        </ul>
+    </header>
+
+    <section>
+
+    </section>
+    <aside>
+
+    </aside>
+    <footer>
+
+    </footer>
+
+    <script>
+        //로고를 클릭하면 메인 홈페이지로 이동
+        $(()=>{
+            $('#logo').click(function(){
+                window.location.href = '18.홈페이지만들기.html';
+            })
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>content영역 관련메소드</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>Content (innerHTML, innerText) 관련 메소드</h1>
+    <h3>* html(['문구']) 메소드 : innerHTML 속성과 관련된 메소드</h3>
+
+    <p>
+        선택된 요소의 content영역의 값을 리턴해주거나 또는 변경해주는 메서드<br>
+        > $('선택자').html() 선택된 요소의 content영역 값을 반환해줌(html태그 포함)
+        > $('선택자').html('문구') : 선택된 요소의 content영역 값을 해당 문구로 변경해 줌(html태그가 존재하면 태그로써 해석함)
+    </p>
+
+    <h1 id="test1">
+        <a>네이버로</a>
+    </h1>
+    <h1 id="test2">
+    </h1>
+
+    <script>
+        $(()=>{
+            // const temp = document.getElementById('test1');
+            const temp = $('#test1').html();
+            console.log(temp);
+            $('#test2').html(temp);
+            $('#test2').children().attr('href', 'https://naver.com');
+        })
+    </script>
+ 
+    <h3>* html(['문구']) 메소드 : innerHTML 속성과 관련된 메소드</h3>
+
+    <p>
+        선택된 요소의 content영역의 값을 리턴해주거나 또는 변경해주는 메서드<br>
+        > $('선택자').text() : 선택된 요소의 content 영역의 값을 변환(html태그는 포함x, 오로지 text만)
+        > $('선택자').text('문구') : 선택된 요소의 content 영역의 값을 제시한 문구로 변경(html태그라 존재할 경우 태그해석x)
+    </p>
+
+    <h1 id="test3">
+        <a>구글로</a>
+    </h1>
+    
+    <h1 id="test4">
+
+    </h1>
+
+    <script>
+        $(()=>{
+            //const tmp = document.getElementById('test3').innerText;
+            const tmp = $('#test3').text();
+            console.log(tmp);
+
+            $('#test4').text('<a>' + tmp + '</a>');
+        })
+    </script>
+
+    <hr>
+
+    <div class="test">테스트</div>
+    <div class="test">테스트</div>
+    <div class="test">테스트</div>
+
+    <script>
+        $(() => {
+            // class가 text인 요소객체의 글자를 <h1> 변경됨</h1>
+
+            $('.test').html('<h1>변경됨</h1>'); 
+
+            // 선택된 요소들을 순차적으로 접근할 때마다 해당 function이 실행됨
+            // 이때 함수 실행시 리턴된 값으로 문구 변경
+            let count = 0;
+            $('.test').html(function(){
+                return `<h1>다시 변경 ${++count}</h1>`;
+            })
+
+            $('.test').html(function(index, html) {
+                return `<h1>인덱스 : ${index}, content내용 : ${html}</h1>`
+            })
+            // text()도 마찬가지임
+        })
+    </script>
+</body>
+</html>

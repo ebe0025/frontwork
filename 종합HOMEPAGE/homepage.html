@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="resources/css/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+    <script src="resources/javascript/javascript.js?ver=2"></script>></script>
+
+    <title>대게</title>
+
+    
+</head>
+<body>
+    <header>
+        <div>
+            <img src="resources/img/대게로고.png" alt="로고">
+        </div>
+        <nav>
+            <ul class="nav">
+                <li><a href="">대게 상품 </a></li>
+                <li>국산대게
+                    <ul class="submenu">
+                        <li><a href="">박달대게</a></li>
+                        <li><a href="">영덕대게</a></li>
+                        <li><a href="">혹게</a></li>
+                        <li><a href="">홍게</a></li>
+                    </ul>
+                </li>
+                <li>외국산대게
+                    <ul class="submenu">
+                        <li><a href="">킹크랩</a></li>
+                        <li><a href="">프리모리</a></li>
+                        <li><a href="">마가단</a></li>
+                        <li><a href="">연해주</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <article id="content">
+        <section  id="imgslide">
+            <div>
+                <img src="resources/img/대게메인.jpg" alt="대게소개1">
+                <img src="resources/img/킹크렙.jpg" alt="대게소개2">
+                <img src="resources/img/대게찜.jpg" alt="대게소개3">
+            </div>  
+        </section>
+
+        <table>
+            <caption>공지사항</caption>
+            <thead>
+                <tr>
+                    <th>글번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>조회수</th>
+                    <th>작성일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="clickable-row" data-href="https://google.com">
+                    <td>1</td>
+                    <td>제목1</td>
+                    <td>vince</td>
+                    <td>43</td>
+                    <td>2023-03-31</td>
+                </tr>
+                <tr class="clickable-row" data-href="https://naver.com">
+                    <td>2</td>
+                    <td>제목2</td>
+                    <td>성훈</td>
+                    <td>60</td>
+                    <td>2023-04-13</td>
+                </tr>
+                <tr class="clickable-row" data-href="https://naver.com">
+                    <td>3</td>
+                    <td>제목3</td>
+                    <td>헬로</td>
+                    <td>80</td>
+                    <td>2023-04-18</td>
+                </tr>
+                <tr class="clickable-row" data-href="https://naver.com">
+                    <td>4</td>
+                    <td>제목4</td>
+                    <td>ㅎㅎ</td>
+                    <td>43</td>
+                    <td>2023-04-29</td>
+                </tr>
+        </table>
+
+        <div id="texture2">
+            <img src="resources/img/대게수조관.jpg" alt="대게수조관">
+        </div>
+
+
+        <section class="icon">
+            <div class="imgbtn">
+                <img src="resources/img/문의사항.png" alt="no"><br>
+                <button>문의사항</button>
+            </div>
+            <div class="imgbtn">
+                <img src="resources/img/문의사항.png" alt="no"><br>
+                <button>소도매관련 문의</button>
+            </div>
+            <div class="imgbtn">
+                <img src="resources/img/문의사항.png" alt="no"><br>
+                <button>대게관련주의사항</button>
+            </div>
+        </section>
+
+        </div>
+    </article>
+
+
+    <footer>
+        <span>더조은 대게 유통사</span><br>
+        <span>대표자 : 김대현|주소 : 서울 강남구 강남대로 78길 8 한국빌딩 4층,8층</span><br>
+        <span>사업자등록번호 864-85-00997|통신판매업신고번호 2018-서울서초-2615 | 마케팅제휴 : partner@tjoeun.co.kr</span><br>
+        <p>ⓒ THEJOEUN ACADEMY Corp.</p>
+    </footer>
+
+    <!-- <script>
+        $(()=>{
+        /*
+        $('.nav>li').mouseover(function(){
+
+             $('.submenu').stop().slideDown();
+        })
+        $('.nav').mouseout(function(){
+            $('.submenu').stop().slideUp();
+        })
+
+        */
+
+        //각각 내려오기
+        $('.nav>li').mouseover(function(){
+            $(this).children('.submenu').stop().slideDown();
+        })
+
+        $('.nav>li').mouseout(function(){
+            $(this).children('.submenu').stop().slideUp();
+        })
+
+        // 이미지 fadIn_Out 적용
+        setInterval(slide, 2000);
+        let x = $('#imgslide>img');
+        let y = 3;
+
+
+
+                // let x = $('#imgslide>img');
+                // let y = 3;
+                // setInterval(function(){
+                //     y--;
+                //     if(y==0){
+                //         x.fadeIn();
+                //         y = 3;
+                //     } else {
+                //     x.eq(y).fadeOut;
+                //     }
+                // }, 2000)
+                
+        })
+
+    </script> -->
+
+</body>
+</html>

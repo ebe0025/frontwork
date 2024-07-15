@@ -1,0 +1,49 @@
+/* 전체 */
+* {margin: 0 auto; padding: 0; list-style: none; text-decoration: none; color: black;}
+a {color: inherit;}
+a:hover {color: inherit;}
+body {width:1000px;}
+
+/* 헤더부분 */
+header {height: 100px;}
+header>div {float: left;}
+header>div>img {width: 100px; margin-top: 25px;}
+
+article>section img {width: 100%;}
+
+header>nav{float: right; margin-top: 25px; padding: 10px;}
+.nav>li {float: left; width: 200px; text-align: center; position: relative; padding: 5px 0;}
+.nav ul {display: none;}
+.submenu li{height: 40px; line-height: 40px; }  
+#texture2>img {float : right; width: 390px; height: 400px; margin-bottom: 5px;}
+footer {clear:both;}
+#여행사진들 { display: flex; width: 1000px; height: 400px; flex-direction: row; flex-wrap: wrap; justify-content: center;}
+#여행사진들> img { width: 300px;}
+
+/*메뉴 */
+.nav>li:hover { background-color: aliceblue;}
+.submenu>li:hover {background-color: rgba(32, 53, 51, 0.3);}
+
+/*이미지 슬라이드*/
+#imgslide {clear: both; width:1000px; height: 362px; position: relative; margin: 10px 0; overflow: hidden;}
+#imgslide>div {position: absolute; display: flex;  }
+#imgslide img {
+    width: 1000px;
+    height: 362px; 
+}
+
+
+
+.icon {clear: both; text-align:center; display:flex;}
+.icon img {width: 100px; height: 100px;}
+.imgbtn button{margin-top: 5px; padding: 10px; background-color: beige; color: black; border: none; border-radius: 10px; font-size: 20px}
+
+/*공지사항 테이블*/
+article>table{float : left; width: 600px;  border-collapse: collapse; margin-top: 20px;}
+article>table>caption{ margin-bottom: 20px; font-weight: bold; font-size: 24px;}
+.clickable-row { cursor: pointer;}
+article>table, th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}

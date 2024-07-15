@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 메소드</title>
+    <style>
+        .area {
+            border: 1px solid;
+        }
+        .small { width: 200px;}
+        .big { width: 400px;}
+    </style>
+</head>
+<body>
+    <h1>객체 메소드</h1>
+    
+    <h3>* 객체 메소드 속성</h3>
+    <p>객체의 속성 중 함수 자료형인 속성을 메소드라고 부름</p>
+
+    <button onclick="test1();">실행확인</button>
+    <div class="area big" id="area1"></div>
+
+    <script>
+        function test1(){
+            let area1 = document.getElementById('area1');
+            let name = '이고잉';
+
+            const dog = {
+                name : '태양',
+                kind : '잡종',
+                eat : function(food){
+                    area1.innerHTML += 'eat메소스가 호출됨<br>';
+                    area1.innerHTML += `${food}<br>`;
+                    area1.innerHTML += `${this.kind} 종류인 ${this.name}가 ${food}를 먹고 있어요<br>`;
+                }
+            };
+            dog.eat('사과');
+
+            area1.innerHTML += '----------------------------------------------<br>';
+
+            name = 'hong';
+            let age = 25;
+
+            // ES4
+            const p1 ={
+                name : name,
+                age : age,
+                fun1 : function(){
+                    const result = this.name.toUpperCase();
+                    area1.innerHTML += result + '!!!<br>';
+                },
+                setAge : function(vAge){
+                    this.age = vAge;
+                    area1.innerHTML += `나이 : ${this.age}<br>`;
+                }
+            }
+
+            // ES6(2015)
+            const p2 ={
+                name, 
+                age,
+                fun1(){
+                    const result = this.name.toUpperCase();
+                    area1.innerHTML += result + '!!!<br>';
+                },
+                setAge(vAge){
+                    this.age = vAge;
+                    area1.innerHTML += `나이 : ${this.age}<br>`;
+                }
+            }
+
+            p1.fun1();
+            p1.setAge(30);
+            p2.fun1();
+            p2.setAge(30);
+        }
+    </script>
+
+    <hr>
+
+    <h3>* in과 with키워드</h3>
+    <p>
+        in : 객체 내에 해당 속성이 있는지 확인해 주는 키워드 (존재하면 true)
+        with : 객체의 속성에 접근시 객체명 제시하는걸 생략할 수 있음(코드를 줄여주는 키워드)
+    </p>
+
+    이름 : <input id="name" value="임성훈"><br>
+    국어 : <input type="number" id="kor" value="45"><br>
+    수학 : <input type="number" id="math" value="75"><br>
+    영어 : <input type="number" id="eng" value="97"><br>
+    <button onclick="test2();">실행확인</button>
+    <div class="area big" id="area2"></div>
+
+    <script>
+        function test2(){
+            let area2 = document.getElementById('area2');
+            const student = {
+                name : document.getElementById('name').value,
+                kor : document.getElementById('kor').value,
+                math : document.getElementById('math').value,
+                eng : document.getElementById('eng').value,
+                toString(){
+                    return `name : ${this.name}, kor : ${this.kor}, math : ${this.math}, eng : ${this.eng}<br>`;
+                },
+                getSum(){
+                    return parseInt(this.kor) + Number(this.math) + Number(this.eng);
+                },
+                getAvg(){
+                    return Math.round((this.getSum()/3)*100)/100;
+                }
+            };
+            console.log(student);
+            // 객체 student 호출시 toString()메소드 호출
+            // toString을 재정의하여 재정의한 값 출력
+
+            area2.innerHTML += `student : ${student}<br>`;
+            area2.innerHTML += `name속성이 있는가? ${'name' in student}<br>`;
+            area2.innerHTML += `age속성이 있는가? ${'age' in student}<br>`;
+
+            area2.innerHTML += `학생 이름 : ${student.name}<br>`;
+            area2.innerHTML += `국어 점수: ${student.kor}<br>`;
+            area2.innerHTML += `수학 점수 : ${student.math}<br>`;
+            area2.innerHTML += `영어 점수 : ${student.eng}<br>`;
+
+            area2.innerHTML += `총 점수 : ${student.getSum()}<br>`;
+            area2.innerHTML += `평균 점수 : ${student.getAvg()}<br>`;
+            
+            area2.innerHTML += '----------------------------------------------<br>';
+
+            with(student) {
+                area2.innerHTML += `학생 이름 : ${name}<br>`;
+                area2.innerHTML += `국어 점수: ${kor}<br>`;
+                area2.innerHTML += `수학 점수 : ${math}<br>`;
+                area2.innerHTML += `영어 점수 : ${eng}<br>`;
+                area2.innerHTML += `총 점수 : ${getSum()}<br>`;
+                area2.innerHTML += `평균 점수 : ${getAvg()}<br>`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+    <style>
+        .area {
+            width: 500px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <h1>정규표현식</h1>
+    <h3>* 정규표현식 객체 생성 및 정규표현식과 관련된 메서드</h3>
+
+    <button onclick="test1();">실행확인</button>
+    <div class="area" id="area1"></div>
+
+    <script>
+        function test1() {
+            const area1 = document.querySelector('#area1');
+            const str1 = 'javascript jquery ajax';
+            const str2 = 'java oracle html css';
+
+            // 정규표현식 객체 생성 == 정규식변수를 선언
+            let regExp = new RegExp('script');    // 방법1
+            let regExp2 = /script/;               // 방법2
+
+            console.log(regExp);
+            console.log(regExp2);
+
+            /*
+            * RegExp 객체에서 제공하는 메서드(정규식.xxx(문자열))
+            - 정규식.test(문자열) : 문자열에서 정규식값과 일치하는 값이 있으면 true
+            - 정규식.exec(문자열) : 문자열에서 정규식값과 일치하는 값이 있으면 처음매칭된 문자열 반환, 없으면 null
+
+            * String 객체에서 제공하는 메서드(문자열.xxx(정규식))
+            - 문자열.match(정규식) : 문자열에서 정규식값과 일치하는 값을 찾아서 반환
+            - 문자열.search(정규식) : 문자열에서 정규식값과 일치하는 값의 시작인덱스값을 반환, 없으면 -1
+            - 문자열.replace(정규식, 바꿀값) : 문자열에서 정규식값과 일치하는 첫번째 문자열을 바꿀값으로 변경하여 반환
+            - 문자열.split(정규식) : 정규식에 지정된 값을 구분자로하여 쪼개진 값들이 담겨있는 배열 반환
+            */
+
+            area1.innerHTML += `str1 : ${str1}<br>`;
+            area1.innerHTML += `str2 : ${str2}<br>`;
+            area1.innerHTML += `regExp : ${regExp}<br><br>`;
+
+            area1.innerHTML += `regExp.test(str1) : ${regExp.test(str1)}<br>`; 
+            area1.innerHTML += `regExp.test(str2) : ${regExp.test(str2)}<br>`;
+            area1.innerHTML += `regExp.exec(str1) : ${regExp.exec(str1)}<br>`; 
+            area1.innerHTML += `regExp.exec(str2) : ${regExp.exec(str2)}<hr>`;
+
+            area1.innerHTML += `str1.match(regExp) : ${str1.match(regExp)}<br>`;
+            area1.innerHTML += `str2.match(regExp) : ${str2.match(regExp)}<br>`;
+            area1.innerHTML += `str1.search(regExp) : ${str1.search(regExp)}<br>`;
+            area1.innerHTML += `str2.search(regExp) : ${str2.search(regExp)}<hr>`;
+
+            area1.innerHTML += `str1.replace(regExp, '스크립트') : ${str1.replace(regExp, '스크립트')}<br>`;
+            area1.innerHTML += `str1.split(regExp) : ${str1.split(regExp)}<br>`;
+            regExp = / /;
+            area1.innerHTML += `str1.split(regExp) : ${str1.split(regExp)}<br>`;
+        }
+    </script>
+
+    <hr>
+
+    <h3>* 메타 문자</h3>
+    <p>
+        메타문자를 이용하여 정규식으로 검색조건으로 삼을 '특정패턴'을 만듬<br>
+        문자열이 해당 정규식으로 제시한 특정패턴에 만족하는지 test()를 통해 검사하거나<br>
+        replace()이용하여 치환 가능
+    </p>
+
+    <button onclick="test2();">실행확인</button>
+    <div class="area" id="area2"></div>
+    <script>
+        function test2() {
+            const area2 = document.getElementById('area2');
+            const str = 'javascript jquery ajax';
+            
+            let regExp = /a/;
+            area2.innerHTML += `/a/ : ${regExp.test(str)}<br>`;
+            area2.innerHTML += `/a/ 를 (***)로 변환 : ${str.replace(regExp, '(***)')}<hr>`;
+
+            // 1. ^ : 시작의미
+            regExp = /^j/;
+            area2.innerHTML += `/^j/ : ${regExp.test(str)}<br>`;
+            area2.innerHTML += `/^j/ 를 (***)로 변환 : ${str.replace(regExp, '(***)')}<hr>`;
+
+            // 2. [] : []내에 여러문자들을 목록처럼 나열 가능
+            regExp = /[bvc]/;
+            area2.innerHTML += `/[bvc]/ : ${regExp.test(str)}<br>`;
+            area2.innerHTML += `/[bvc]/ 를 (***)로 변환 : ${str.replace(regExp, '(***)')}<br>`;
+
+            regExp = /^[saj]/;
+            area2.innerHTML += `/^[saj]/ : ${regExp.test(str)}<br>`;
+            area2.innerHTML += `/^[saj]/ 를 (***)로 변환 : ${str.replace(regExp, '(***)')}<br>`;
+
+            // 3. $ : 끝을 의미
+            regExp = /x$/
+            area2.innerHTML += `/x$/ : ${regExp.test(str)}<br>`;
+
+            // j로 시작하고 x로 끝나는
+            regExp = /^jx$/
+            area2.innerHTML += `/^jx$/ : ${regExp.test(str)}<br>`;  // jx
+            // false 중간에 글씨가 들어 있어서
+
+            // 4. 점(.) : 개행문자를 제외한 모든문자(영문자, 숫자, 한글, 특수문자)
+            // 5. + : 한글자 이상
+            //       .+ : 개행문자를 제외한 어떤 문자 한글자 이상인 경우
+
+            regExp = /^j.+x$/;
+            area2.innerHTML += `/^j.+x$/ : ${regExp.test(str)}<hr>`;
+
+            // 시작부터 끝까지 숫자로만 이루어져야 됨
+            // 갯수는 상관없음 단, 적어도 1글자는 무조건 있어야 됨
+            regExp = /^[0-9]+$/;
+            area2.innerHTML += `/^[0-9]+$/ : ${regExp.test('17283746')}<br>`;
+            area2.innerHTML += `/^[0-9]+$/ : ${regExp.test('172!7글짜a1')}<br>`;
+
+            // 시작부터 끝까지 영문자(대문자, 소문자)로만 이루어져야 됨
+            // 갯수 상관없음 단, 적어도 1글자는 무조건 있어야 됨
+            regExp = /^[a-zA-z]+$/;
+            area2.innerHTML += `/^[a-zA-z]]+$/ : ${regExp.test('JavaScript')}<br>`;
+            area2.innerHTML += `/^[a-zA-z]]+$/ : ${regExp.test('172!7글자4a')}<br>`;
+
+            // 시작부터 끝까지 한글로만 이루어져야 됨
+            // 갯수 상관없음 단, 적어도 1글자는 무조건 있어야 됨
+            regExp = /^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/;
+            area2.innerHTML += `/^[ㄱ-ㅎㅏ-ㅣ가-힣]]+$/ : ${regExp.test('안녕ㅋ큐ㅠ')}<br>`;
+            area2.innerHTML += `/^[ㄱ-ㅎㅏ-ㅣ가-힣]]+$/ : ${regExp.test('172!7글자4a')}<br>`;
+
+            const userName = prompt("이름 입력(한글만 가능)")
+            regExp = /^[가-힣]{2,}$/;
+            if(regExp.test(username)){
+                alert('반갑습니다. 환영합니다');
+            }else {
+                alert('유효한 형식의 이름이 아닙니다');
+            }
+
+        }
+    </script>
+
+    <h3>* 플러그 문자</h3>
+    <p>
+        i : 영문자에서 대소문자를 가리지 않고 비교 수행<br>
+        g : 전역으로 비교를 수행<br>
+        m : 여러줄 비교 수행
+    </p>
+    <button onclick="test3()">i 실행 확인</button>
+
+    <script>
+        function test3(){
+            // 조건. 영문자(대소문자) 또는 숫자로만 이루어져한다
+            //         단, 첫글자는 반드시 대문자로
+            let regExp = /^[A-Z][a-zA-z0-9]+$/
+            regExp = /^[a-z][a-z0-9]+$/i;
+            const value = prompt('영문자(대소문자) 또는 숫자만 입력');
+            if(regExp.test(value)){
+                alert('잘 입력하였습니다');
+            }else
+            {
+                alert('유효한 형식이 아닙니다');
+            }
+        }
+    </script>
+
+    <button onclick="test4()">g 실행 확인</button>
+
+    <script>
+        function test4(){
+            const str = 'javaScript jQuery Ajax';
+
+            let regExp = /a/;
+            console.log('/a/ : ', str.replace(regExp, '(***)'));
+
+            regExp = /a/g;
+            console.log('/a/ : ', str.replace(regExp, '(***)'));
+
+            regExp = /a/ig;
+            console.log('/a/ : ', str.replace(regExp, '(***)'));
+
+            console.log('----------------------------------------------------');
+            const str2 = 'JavaScript\nJQuery\nAjax'
+            console.log('str2 : ', str2);
+
+            regExp =/^J/g;
+            console.log('/^J/g : ', str2.replace(regExp, '(***)'));
+
+            regExp =/^J/gm;
+            console.log('/^J/gm : ', str2.replace(regExp, '(***)'));
+
+        }
+    </script>
+
+    <h3>* 주민등록번호 확인</h3>
+    주민번호 : <input id="pno" placeholder="123456-1234567">
+    <button onclick="test5();">확인</button>
+    <script>
+        function test5(){
+            const value = document.getElementById('pno').value;
+
+            // 1단계 : 글자만 확인
+            let regExp = /^......-.......$/;
+            /*
+            if(regExp.test(value)){
+                alert('정상입력');
+            }else {
+                alert('잘못입력')
+            } */
+
+            // 2단계 : 숫자6개 - 숫자7개
+            /*
+            (점). : 개행문자를 제외한 모든문자1글자
+            \d : 숫자만
+            \D : 숫자를 제외한 모든 문자
+
+            \w : 영문자, 숫자, _(언더바)
+            \W : 영문자, 숫자, _(언더바)를 제외한 모든 문자
+
+            \s : 공백문자(띄어쓰기, 탭, 줄바꿈)
+            \S : 공백문자를 제외한 모든 문자
+
+            <수량문자>
+            +: 1글자이상
+            *: 0글자이상
+            ? : 0글자 또는 1글짜
+
+            {5} : 5글자
+            {2, 5} : 2~5글자
+            {2, } : 2글자 이상
+            {, 5} : 0~5글자
+            */
+            
+            // 2단계 : 숫자 6개 - 숫자 7개
+            regExp =/^\d{6}-\d{7}$/;
+            /*
+            if(regExp.test(value)){
+                alert('정상입력');
+            }else {
+                alert('잘못입력')
+            }
+            */
+
+            // 3단계 : 숫자 6개 - 첫글자 1~4사이의 숫자
+            regExp =/^\d{6}-[1-4]\d{6}$/;
+            /*
+            if(regExp.test(value)){
+                alert('정상입력');
+            }else {
+                alert('잘못입력')
+            }
+            */
+
+             // 4단계 : 첫2글자, 달2글자확인 - 첫글자 1~4사이의 숫자
+             // - 월 : (0|[1-9]|1[0-2])
+             // - 일 : (0[1-9]|[1-2][0-9]|3[0-1])
+             regExp =/^\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])-[1-4]\d{6}$/;
+
+             if(regExp.test(value)){
+                alert('정상입력');
+            }else {
+                alert('잘못입력')
+            }
+        }
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+    <title>ani_hide_show</title>
+    <style>
+        img{
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>시작적인 효과(Effect 메서드)</h1>
+    <p>페이지 내에 애니메이션 효과를 주기 위해 사용되는 메서드들</p>
+
+    <h3>* show() hide(), toggle()</h3>
+    <p>선택된 요소가 점점 커지면서 보여지고, 점점 작아지면서 사라지게 되는 메소드</p>
+
+    <button id="hide">숨기기</button>
+    <button id="show">보여주기</button>
+    <button id="toggle">토글</button>
+
+    <br><br>
+
+    <img id="img1" src="../01.HTML5/resources/Img/dog-6997211.jpg"> 
+    <div>
+
+    </div>
+
+    <script>
+        $(() =>{
+            $('#hide').click(function(){
+                $('#img1').hide(2000, "easeInOutQuint");
+            });
+
+            $('#show').click(function(){
+                $('#img1').show(2000);
+            })
+
+            $('#toggle').click(function(){
+                $('#img1').toggle(2000, 'easeOutBounce');
+            })
+        })
+    </script>
+</body>
+</html>
